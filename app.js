@@ -20,7 +20,7 @@ function getMyEvents(){
 
 function setAllowGroups(e, id){
     webix.message("Set All Groups");
-    Post(baseURL+"/publishgroups", this.getItems());
+    Post(baseURL+"/publishgroups", $$('my_published_groups').getItems());
     return false;
 }
 
