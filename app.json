@@ -1,0 +1,72 @@
+{
+
+	"rows": [{
+		"view": "template",
+		"type": "header",
+		"template": "Fuzz Portal App Meetup Management"
+	}, {
+		"view": "toolbar",
+		"id": "myToolbar",
+		"cols": [{
+			"view": "button",
+			"value": "Grant Access",
+			"width": 120,
+			"align": "right",
+			"click": "grantAccess"
+		}, {
+			"view": "button",
+			"value": "Revoke Access",
+			"width": 120,
+			"align": "right",
+			"click": "revokeAccess"
+		}, {
+			"view": "button",
+			"value": "Refresh Groups",
+			"width": 150,
+			"align": "right",
+			"click": "getMyGroups"
+		}, {
+			"view": "button",
+			"value": "Sign Out",
+			"width": 120,
+			"align": "right",
+			"click": "signOut"
+		}]
+	}, {
+		"cols": [{}, {
+			"rows": [{
+				"view": "template",
+				"template": "Un-Plubished Groups",
+				"type": "header"
+			}, {
+				"id": "my_groups",
+				"view": "list",
+				"width": 320,
+				"height": 600,
+				"on": {
+					"onItemClick": "onMyGroupItemClicked"
+				},
+				"template": "#name# <div style='padding-left:18px'> #description#, #city# </div>"
+			}]
+		}, {
+			"width": 20
+		},  {
+			"rows": [{
+				"view": "template",
+				"template": "Plubished Groups <button class=\"save_groups\">Save</button>",
+				"type": "header",
+                "onClick": {
+                    "save_groups":"setAllowGroups"
+                }
+			}, {
+			"id": "my_published_groups",
+			"view": "list",
+			"width": 320,
+			"height": 600,
+			"on": {
+				"onItemClick": "onMyPublishedGroupItemClicked"
+			},
+			"template": "#name# <div style='padding-left:18px'> #description#, #city# </div>"
+		}]}, {}]
+	}]
+}

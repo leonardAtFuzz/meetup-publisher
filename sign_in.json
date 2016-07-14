@@ -1,0 +1,19 @@
+{
+"cols":[
+  		{},
+				
+                    { "id":"sign_in_form", "view":"form", "scroll":false, "borderless":true, "gravity":3,
+				"width":300,
+
+				"elements":[
+					{ "view":"text", "name":"username", "label":"User"},
+					{ "view":"text", "name":"password", "type":"password", "label":"Password"},
+					{ "margin":5, "cols":[
+						{ "view":"button", "label":"Login" , "type":"form", "click":"webixSignIn"
+                        },
+						{ "view":"button", "label":"Cancel" }
+					]}
+				]},
+            {}
+    ]
+    }

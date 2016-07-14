@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+    <link rel="stylesheet" href="http://cdn.webix.com/edge/webix.css" type="text/css"> 
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="http://cdn.webix.com/edge/webix.js" type="text/javascript"></script>  
+    <script src="common.js" type="text/javascript"></script>  
+    <script src="app.js" type="text/javascript"></script>  
+
+		<style>
+			#areaA{
+/*				margin: 30px;*/
+			}
+            .save_groups {
+			width:100px;
+			text-align: center;
+			font-weight:bold;
+			float:right;
+			background-color:#444;
+			color:white;
+			border-radius:3px;
+		}
+		</style>
+		<title>Fuzz Portal App Management</title>
+	</head>
+	<body>
+
+		<div id="areaA"></div>
+	
+
+		<script type="text/javascript" charset="utf-8">
+          
+            webix.ui({
+                container:"areaA",
+                position:"center",
+                id:"main",
+                cols:[{
+                    
+                }]
+			});
+            
+            //adding progress bar functionality to it
+            webix.extend($$("main"), webix.ProgressBar);
+            
+            //using the functionality
+$$("main").showProgress({
+   type:"icon",
+   delay:3000
+});
+            var accessToken = webix.storage.cookie.get('access_token');
+            
+            var view = "sign_in.json";
+            if( accessToken ){
+                view= "app.json";
+            }
+             webix.ajax(view, function(text){
+                 $$("main").hideProgress();
+                                webix.ui(webix.DataDriver.json.toObject(text), $$('main'), 0);
+                 //adding progress bar functionality to it
+//            webix.extend($$('main'), webix.ProgressBar);
+                            });     
+            
+
+ 
+		</script>
+	</body>
+</html>
