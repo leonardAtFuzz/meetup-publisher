@@ -41,6 +41,8 @@ function webixSignIn(){
 
 function setAllowGroups(e, id){
     webix.message("Set All Groups");
+    console.log("data from set ");
+    console.log($$('my_published_groups').data);
     Post(baseURL+"/publishgroups", $$('my_published_groups').data);
     return false;
 }
