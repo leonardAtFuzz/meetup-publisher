@@ -18,12 +18,6 @@ function getMyEvents(){
     Get(baseURL+"/myevents");
 }
 
-function setAllowGroups(e, id){
-    webix.message("Set All Groups");
-    Post(baseURL+"/publishgroups", $$('my_published_groups').getItems());
-    return false;
-}
-
 function revokeAccess(){
     alert(baseURL+"/revoke_access");
 }
@@ -42,6 +36,13 @@ function webixSignIn(){
     }); 
     })                     
                             
+}
+
+
+function setAllowGroups(e, id){
+    webix.message("Set All Groups");
+    Post(baseURL+"/publishgroups", $$('my_published_groups').data);
+    return false;
 }
 
 function onMyGroupItemClicked(id, e ,node){
