@@ -44,10 +44,10 @@
             webix.extend($$("main"), webix.ProgressBar);
             
             //using the functionality
-$$("main").showProgress({
-   type:"icon",
-   delay:3000
-});
+            $$("main").showProgress({
+               type:"icon",
+               delay:3000
+            });
             var accessToken = webix.storage.cookie.get('access_token');
             
             var view = "sign_in.json";
@@ -57,6 +57,8 @@ $$("main").showProgress({
              webix.ajax(view, function(text){
                  $$("main").hideProgress();
                                 webix.ui(webix.DataDriver.json.toObject(text), $$('main'), 0);
+                 getMyUnPublishedGroups();
+                 getMyPublishedGroups();
                  //adding progress bar functionality to it
 //            webix.extend($$('main'), webix.ProgressBar);
                             });     

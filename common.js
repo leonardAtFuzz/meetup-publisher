@@ -37,14 +37,23 @@ function Post(path, body) {
 }
 
 function AJAX(verb, path, body, successCallback, errorCallback) {
+    var bodyData = '';
+    if( body && Object.keys(body).length > 0 ){
+        console.log('body', body)
+        bodyData = JSON.stringify(body);
+    }
+    
+    console.log(body);
+    console.log(bodyData);
     $.ajax({
         url: path,
         dataType: 'json',
+        contentType: 'application/json',
         type: verb,
         headers: {
-            'Authorization': 'Bearer ' + webix.storage.cookie.get('access_token'),
+            'Authorization': 'Bearer ' + webix.storage.cookie.get('access_token')
         },
-        data: body,
+        data: bodyData,
         success: function(json, textStatus, jQxhr) {
             if( successCallback ){
                 successCallback(json)

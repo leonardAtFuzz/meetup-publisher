@@ -14,6 +14,20 @@ function getMyGroups(){
     });
 }
 
+function getMyPublishedGroups(){
+    Get(baseURL+"/mygroups?published=true", function(data){
+        console.log(data);
+        $$('my_published_groups').parse(data);
+    });
+}
+
+function getMyUnPublishedGroups(){
+    Get(baseURL+"/mygroups?published=false", function(data){
+        console.log(data);
+        $$('my_groups').parse(data);
+    });
+}
+
 function getMyEvents(){
     Get(baseURL+"/myevents");
 }
@@ -38,12 +52,11 @@ function webixSignIn(){
                             
 }
 
-
 function setAllowGroups(e, id){
     webix.message("Set All Groups");
     console.log("data from set ");
     console.log($$('my_published_groups').data.serialize());
-    Post(baseURL+"/publishgroups", $$('my_published_groups').data.serialize());
+    Post(baseURL+"/publishgroups", { groups: $$('my_published_groups').data.serialize() });
     return false;
 }
 
